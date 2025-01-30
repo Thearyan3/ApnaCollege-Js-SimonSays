@@ -1,7 +1,7 @@
 let gameSeq = [];
 let userSeq = [];
 
-
+let btns = ['yellow', 'red', 'green', 'purple'];
 
 let start = false;
 let level = 0;
@@ -31,12 +31,9 @@ function userFlash(btn) {
     }, 250);
 }
 
-
-let btns = ['yellow', 'red', 'green', 'purple'];
 function levelUp() {
     level++;
     h2.innerText = `Level ${level}`;
-
 
     let randIndx = Math.floor(Math.random() * 3);
     let randCol = btns[randIndx];
