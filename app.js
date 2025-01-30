@@ -32,19 +32,34 @@ function userFlash(btn) {
 }
 
 function levelUp() {
+    let userSeq = [];
     level++;
     h2.innerText = `Level ${level}`;
 
     let randIndx = Math.floor(Math.random() * 3);
     let randCol = btns[randIndx];
     let randBtn = document.querySelector(`.${randCol}`);
+    gameSeq.push(randCol);
+    console.log(gameSeq);
     gameFlash(randBtn);
+}
+
+function chekAns(idx){
+ if(userSeq[idx] === gameSeq[idx]){
+    if(userSeq.length == gameSeq.length){
+        levelUp();
+    }
+ }
 }
 
 function btnPress(){
     console.log(this);
     let btn = this;
     userFlash(btn);
+
+    userColor = btn.getAttribute("id");
+    userSeq.push(userColor);
+    chekAns(userSeq.length-1);
 }
 
 let allBtns = document.querySelectorAll('.btn');
